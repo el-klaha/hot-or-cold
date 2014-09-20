@@ -19,10 +19,25 @@ $(document).ready(function(){
   	{
   		secretNumber = Math.floor((Math.random() * 100) + 1);
   		clearInput();
-  		feedback('Make your Guess!');
   		count = 0;
+  		setCount(count);
   		$('#guessList').empty();
   	};
+
+  	var feedback = function ( comment )
+	{
+		$('#feedback').text( comment );
+	};
+
+	var clearInput = function ()
+	{
+		$('#userGuess').val('');
+	};
+
+	var setCount = function ( number )
+	{
+		$('#count').text( number );
+	};
 
   	var guess = function ( userGuess )
 	{
@@ -78,28 +93,13 @@ $(document).ready(function(){
 		}	
 	}
 
-	var feedback = function ( comment )
-	{
-		$('#feedback').text( comment );
-	};
-
-	var clearInput = function ()
-	{
-		$('#userGuess').val('');
-	};
-
-	var setCount = function ( number )
-	{
-		$('#count').text( number );
-	};
-
 	newGame();
 
 	$('form').on('submit', function ( event ){
 		event.preventDefault();
-		guess($('#userGuess').val());
+		guess(+$('#userGuess').val());
 	});
-	
+
 	$(".new").on("click", newGame);
 
 });
