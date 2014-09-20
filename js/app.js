@@ -93,12 +93,14 @@ $(document).ready(function(){
 		$('#count').text( number );
 	};
 
+	newGame();
+
 	$('form').on('submit', function ( event ){
 		event.preventDefault();
 		guess($('#userGuess').val());
 	});
-
-	newGame();
+	
+	$(".new").on("click", newGame);
 
 });
 
